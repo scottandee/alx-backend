@@ -44,8 +44,5 @@ class Server:
         assert page > 0 and page_size > 0
 
         idx: Tuple[int, int] = index_range(page, page_size)
-        with open(self.DATA_FILE) as f:
-            reader = csv.reader(f)
-            dataset: List[List] = [row for row in reader]
-            dataset = dataset[1:]
-        return dataset[idx[0]: idx[1]]
+        self.dataset()
+        return self.__dataset[idx[0]: idx[1]]
