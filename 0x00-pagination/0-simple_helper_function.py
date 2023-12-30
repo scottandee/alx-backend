@@ -7,7 +7,7 @@ given pagination parameters
 from typing import Tuple
 
 
-def index_range(page: int, page_size: int) -> Tuple[int]:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """This function takes two pagination parameters
     as argument and returns a tuple containing the
     start and end index for the pagination of a certain
