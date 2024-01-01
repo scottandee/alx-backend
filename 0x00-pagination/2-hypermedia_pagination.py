@@ -47,7 +47,8 @@ class Server:
         self.dataset()
         return self.__dataset[idx[0]: idx[1]]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Union[int, List[str], None]]:
+    def get_hyper(self, page: int = 1, page_size: int = 10
+                  ) -> Dict[str, Union[int, List[str], None]]:
         """This funtion returns a dictionary of hypermedia
         pagination
         """
