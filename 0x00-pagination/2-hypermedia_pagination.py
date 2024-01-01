@@ -3,7 +3,7 @@
 
 import csv
 import math
-from typing import List, Tuple
+from typing import List, Tuple, Union, Dict
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -47,22 +47,22 @@ class Server:
         self.dataset()
         return self.__dataset[idx[0]: idx[1]]
 
-    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict[str, int]:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Union[int, List[str], None]]:
         """This funtion returns a dictionary of hypermedia
         pagination
         """
-        hyper = {"page": page, "page_size": page_size}
-        hyper["data"] = self.get_page(page, page_size)
+        hyper = {"page_size": page_size, "page": page}
+        hyper.update({"data": self.get_page(page, page_size)})
         total_pages = math.ceil(len(self.__dataset) / page_size)
 
         if page + 1 > total_pages:
-            hyper["next_page"] = None
+            hyper.update({"next_page": None})
         else:
-            hyper["next_page"] = page + 1
+            hyper.update({"next_page": page + 1})
         if page - 1 < 1:
-            hyper["prev_page"] = None
+            hyper.update({"prev_page": None})
         else:
-            hyper["prev_page"] = page - 1
+            hyper.update({"prev_page": page - 1})
 
-        hyper["total_pages"] = total_pages
+        hyper.update({"total_pages": total_pages})
         return hyper
