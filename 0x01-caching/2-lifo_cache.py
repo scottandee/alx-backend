@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""
-Basic Caching
+"""LIFO Caching
 """
 
 from base_caching import BaseCaching
 
 
-class BasicCache(BaseCaching):
-    """This is a basic caching system"""
+class LIFOCache(BaseCaching):
+    """This is an implementation of FIFO caching
+    """
     def __init__(self):
         """Method that runs on instatiation
         """
@@ -19,6 +19,11 @@ class BasicCache(BaseCaching):
         if key is None or item is None:
             return
         self.cache_data.update({key: item})
+
+        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+            discard_key = list(self.cache_data)[-1]
+            del self.cache_data[discard_key]
+            print(f"DISCARD: {discard_key}")
 
     def get(self, key) -> str:
         """Get an item in the cache
