@@ -33,8 +33,10 @@ def hello():
     index.html file
     """
     home_title = _("Welcome to Holberton")
-    home_header	 = _("Hello world!")
-    return render_template("3-index.html", home_header=home_header, home_title=home_title)
+    home_header = _("Hello world!")
+    return render_template(
+        "3-index.html", header=home_header, title=home_title
+    )
 
 
 if __name__ == "__main__":
