@@ -6,13 +6,8 @@ from flask import Flask, render_template, request
 from flask_babel import Babel
 
 
-def get_locale():
-    """This returns the suitable language"""
-    return request.accept_languages.best_match(app.config["LANGUAGES"])
-
-
 app = Flask(__name__)
-babel = Babel(app, locale_selector=get_locale)
+babel = Babel(app)
 
 
 class Config:
@@ -26,12 +21,18 @@ class Config:
 app.config.from_object(Config)
 
 
+@babel.localeselector
+def get_locale():
+    """This returns the suitable language"""
+    return request.accept_languages.best_match(app.config["LANGUAGES"])
+
+
 @app.route("/")
 def hello():
     """This route returns the
     index.html file
     """
-    return render_template("1-index.html")
+    return render_template("2-index.html")
 
 
 if __name__ == "__main__":
