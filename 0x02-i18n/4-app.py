@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Basic flask app
+"""This flask app parametizes the templates
+based on the locale of the user.
 """
 
 from flask import Flask, render_template, request
