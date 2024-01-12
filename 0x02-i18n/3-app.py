@@ -35,7 +35,7 @@ def hello():
     home_title = _("Welcome to Holberton")
     home_header = _("Hello world!")
     return render_template(
-        "3-index.html", header=home_header, title=home_title
+        "3-index.html", title=home_title, header=home_header
     )
 
 
