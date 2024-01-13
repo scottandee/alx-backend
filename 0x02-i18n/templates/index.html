@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ title }}</title>
+</head>
+<body>
+    <h1>{{ header }}</h1>
+    {% if g.user != None %}
+        <p>{{ logged_in_as | format(username=g.user.name) }}</p>
+    {% else %}
+        <p>{{ not_logged_in }}</p>
+    {% endif %}
+    <p>{{ current_time_is | format(current_time=g.time) }}</p>
+</body>
+</html>
