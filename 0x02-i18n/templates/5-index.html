@@ -6,9 +6,9 @@
 <body>
     <h1>{{ header }}</h1>
     {% if g.user != None %}
-        <p>You are logged in as {{ g.user.name }}.</p>
+        <p>{{ logged_in_as | format(username=g.user.name) }}</p>
     {% else %}
-        <p>You are not logged in.</p>
+        <p>{{ not_logged_in }}</p>
     {% endif %}
 </body>
 </html>

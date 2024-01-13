@@ -67,7 +67,8 @@ def hello():
     logged_in_as = _("You are logged in as %(username)s.")
     not_logged_in = _("You are not logged in.")
     return render_template(
-        "5-index.html", title=home_title, header=home_header
+        "5-index.html", title=home_title, header=home_header,
+        not_logged_in=not_logged_in, logged_in_as=logged_in_as
     )
 
 
