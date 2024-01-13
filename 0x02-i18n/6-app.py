@@ -38,10 +38,11 @@ def get_locale():
         if locale_from_url in app.config["LANGUAGES"]:
             return locale_from_url
 
-    locale_from_settings = g.user.get("locale")
-    if locale_from_settings:
-        if locale_from_settings in app.config["LANGUAGES"]:
-            return locale_from_settings
+    if g.user:
+        locale_from_settings = g.user.get("locale")
+        if locale_from_settings:
+            if locale_from_settings in app.config["LANGUAGES"]:
+                return locale_from_settings
 
     locale_from_header = request.headers.get("Accept-Language")
     if locale_from_header:
